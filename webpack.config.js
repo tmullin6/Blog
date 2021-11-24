@@ -1,23 +1,26 @@
 const path = require('path');
 
+
 module.exports = {
+
+    mode: 'development',
+
     entry: {
+        
         index: './src/index.js'
+     },
+
+    output: {
+        filename: '[name].bundle.js',
+        path: path.resolve(__dirname, 'dist')
     },
+
     module: {
         rules: [
           {
             test: /\.less$/i,
-            loader: [
-              "style-loader",
-              "css-loader",
-              "less-loader",
-            ],
-          },
+            use: ['style-loader', 'css-loader','less-loader',],
+          }
         ],
       },
-    output: {
-      filename: '[name].bundle.js',
-      path: path.resolve(__dirname, 'dist'),
-    },
-  };
+};
