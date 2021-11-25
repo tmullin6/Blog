@@ -1,15 +1,12 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    height: 60px;
+    border-bottom: 2px solid black;
+    height: 30px;
     width: 100%;
-    background-color:aquamarine;
     margin: 0px;
 
     .title {
-        padding: 5px;
-        text-align: center;
-        font-size: 40px;
+        font-size: 20px;
+        text-shadow: 1px 1px grey;
     }
 
     .nav{
@@ -17,8 +14,7 @@
 
         #posts{
             cursor: pointer;
-            color: white;
-            text-shadow: 1px 1px black;
+           
         }
     }
 }
@@ -31,10 +27,28 @@
 
 }
 
-.post-tile {
+.recent-posts {
     display: flex;
     justify-content: space-evenly;
-    height: 80px;
-    width: 100%;
-    border: 2px solid black;
+    width: 900px;
+    margin-left: 225px;
+
+    .post-tile {
+        cursor: pointer;
+        text-align: center;
+        height: 200px;
+        width: 350px;
+        border: 2px solid black;
+        box-shadow: -1px -1px grey -1px -1px grey -1px -1px grey -1px -1px grey;
+
+        .post-title{
+            border-bottom: 1px dotted black;
+            font-size: 20px;
+        }
+
+        .post-text{
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
 }

@@ -2,11 +2,19 @@ import "./style.less";
 import Post from "./post";
 
 
-const featuredPosts = document.querySelector('.featured');
+const recentPosts = document.querySelector('.recent-posts');
 const appBody = document.querySelector(".page-body");
-const allPosts = document.querySelector('#posts');
+const title = document.querySelector('.title');
 
 window.onload=getAllPosts();
+
+title.addEventListener('click',()=>{
+    while(appBody.firstChild){
+        appBody.removeChild(appBody.lastChild);
+    };
+
+    getAllPosts();
+})
 
 //allPosts.addEventListener('click',renderPostPage);
 
@@ -17,7 +25,7 @@ async function getAllPosts(){
 
     for (let i =0; i<posts.length; i++){
         let newPost = new Post(posts[i].title,posts[i].author,posts[i].text,posts[i].date,posts[i].comments,posts[i]._id);
-
+        console.log(newPost);
         createPostTile(newPost);
     }
     
@@ -36,17 +44,22 @@ function createPostTile (post){
     const postDiv = document.createElement('div');
     const postTitle = document.createElement('p');
     const postText = document.createElement('p');
+    //const postDate = document.createElement('p');
 
     postDiv.classList.add('post-tile');
+    postTitle.classList.add('post-title');
+    postText.classList.add('post-text');
 
     postTitle.textContent=post.title;
     postText.textContent=post.text;
+    //postDate.textContent = post.date;
 
-    featuredPosts.appendChild(postDiv);
+    recentPosts.appendChild(postDiv);
     postDiv.appendChild(postTitle);
     postDiv.appendChild(postText);
+    //postDiv.appendChild(postDate);
 
-    postTitle.addEventListener("click",()=>{
+    postDiv.addEventListener("click",()=>{
         getPost(post.id);
     });
 
